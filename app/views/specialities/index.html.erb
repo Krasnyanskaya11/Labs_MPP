@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Specialities</h1>
+
+<div id="specialities">
+  <%= form_with(url: specialities_path, method: :get) do |form| %>
+    <%= form.text_field :query, placeholder: 'Search specialities' %>
+    <%= form.submit 'Search' %>
+  <% end %>
+  <% @specialities.each do |speciality| %>
+    <%= render speciality %>
+    <table>
+      <tbody>
+      <tr><th>Name: </th>
+        <td><%= speciality.name %> </td> </tr>
+      <tr><th>Doctor : </th>
+        <td><%= speciality.doctor.name %>  <%= speciality.doctor.surname %> </td> </tr>
+      </tbody>
+    </table>
+
+
+      <%= link_to "Show this speciality", speciality %>
+
+  <% end %>
+  <%= will_paginate @specialities, renderer: WillPaginate::ActionView::LinkRenderer, class: 'pagination' %>
+
+</div>
+
+<p><%= link_to "New speciality", new_speciality_path,method: :get %>
+<%= link_to 'Main page', root_path %></p>
+<p>
+  Sort by:
+  <%= link_to 'Name (asc)', { sort_field: 'name', sort_direction: 'asc' } %>
+  <%= link_to 'Name (desc)', { sort_field: 'name', sort_direction: 'desc' } %>
+  <%= link_to 'Created at (asc)', { sort_field: 'created_at', sort_direction: 'asc' } %>
+  <%= link_to 'Created at (desc)', { sort_field: 'created_at', sort_direction: 'desc' } %>
+</p>

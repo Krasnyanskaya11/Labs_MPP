@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @patient_card %>
+<p class="notice"><%= notice %></p>
+<div class="show-info">
+<p><strong>ID :</strong> <%= @patient_card.id %></p>
+<p><strong>Name of the diagnosis :</strong> <%= @patient_card.diagnosis%></p>
+<p><strong>Start date of treatment :</strong> <%= @patient_card.data_st%></p>
+<p><strong>Clinic :</strong> <%= @patient_card.clinic.name %></p>
+<p><strong>Patient name,surname :</strong> <%= @patient_card.patient.full_name %></p>
+</div>
+<div>
+ <p> <%= link_to "Edit this patient card", edit_patient_card_path(@patient_card) %>
+  <%= link_to "Back to list", patient_cards_path %>
+ </p>
+  <p><%= button_to "Destroy this patient card", @patient_card, method: :delete ,class:"button"%></p>
+</div>

@@ -1,0 +1,29 @@
+<h1>Editing department</h1>
+
+<br>
+<%= form_for @department do |f| %>
+  <div class="form-columns">
+    <div class="form-column">
+  <div class="field">
+    <p><%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+  </div>
+      <div class="form-column">
+  <div class="field">
+    <p>
+      <%= f.label :clinic_id %>
+      <%= f.collection_select :clinic_id, Clinic.all, :id, :name %>
+    </p>
+  </div>
+    </div>
+  <%= f.submit %>
+<% end %>
+
+<div>
+ <p>
+  <%= link_to "Back to departments", departments_path %>
+ </p>
+</div>
+</div>
+</div>

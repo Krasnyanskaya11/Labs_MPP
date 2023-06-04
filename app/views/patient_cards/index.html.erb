@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Patient cards</h1>
+
+<div id="patient_cards">
+  <%= form_with(url: patient_cards_path, method: :get) do |form| %>
+    <%= form.text_field :query, placeholder: 'Search patient_cards' %>
+    <%= form.submit 'Search' %>
+  <% end %>
+  <% @patient_cards.each do |patient_card| %>
+    <%= render patient_card %>
+    <table>
+
+      <tbody>
+      <tr><th>Name of the diagnosis: </th>
+        <td><%= patient_card.diagnosis %> </td> </tr>
+      <tr><th>Start date of treatment : </th>
+        <td><%= patient_card.data_st %> </td> </tr>
+      <tr><th>Clinic: </th>
+        <td><%= patient_card.clinic.name %></td> </tr>
+      <tr><th>Patient: </th>
+        <td><%= patient_card.patient.full_name%> </td> </tr>
+      <tr><th>Doctor: </th>
+        <td><%= patient_card.doctor_id %> </td> </tr>
+      </tbody>
+    </table>
+
+
+      <%= link_to "Show this patient card", patient_card %>
+  <% end %>
+    <%= will_paginate @departments, renderer: WillPaginate::ActionView::LinkRenderer, class: 'pagination' %>
+</div>
+<p>
+<%= link_to "New patient card", new_patient_card_path,method: :get %>
+</p>
+    <p><%= link_to 'Main page', root_path %></p>
+    <p>
+      Sort by:
+      <%= link_to 'Name (asc)', { sort_field: 'name', sort_direction: 'asc' } %>
+      <%= link_to 'Name (desc)', { sort_field: 'name', sort_direction: 'desc' } %>
+      <%= link_to 'Created at (asc)', { sort_field: 'created_at', sort_direction: 'asc' } %>
+      <%= link_to 'Created at (desc)', { sort_field: 'created_at', sort_direction: 'desc' } %>
+    </p>

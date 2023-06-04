@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @speciality %>
+
+<div>
+  <h1>Speciality</h1>
+  <p class="notice"><%= notice %></p>
+  <div class="show-info">
+  <p><strong>ID :</strong> <%=  @speciality.id %></p>
+  <p><strong>Name :</strong> <%=  @speciality.name %></p>
+  <p><strong>Doctor :</strong><%= @speciality.doctor.name %> <%= @speciality.doctor.surname %></p>
+  </div>
+
+<p>  <%= link_to "Edit this speciality", edit_speciality_path(@speciality) %>
+  <%= link_to "Back to specialities", specialities_path %></p>
+
+  <%= button_to "Destroy this speciality", @speciality, method: :delete ,class:"button"%>
+</div>

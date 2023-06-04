@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Patient clinics</h1>
+
+
+
+<div id="patient_clinics">
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Пацієнт</th>
+      <th>Вік</th>
+      <th>Номер картки</th>
+      <th>Link(пацієнт)</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @patient_info.each do |patient| %>
+      <tr>
+        <td><%= patient[:patient_name] %> <%= patient[:patient_surname] %></td>
+        <td><%= patient[:patient_age] %></td>
+        <td><%= patient[:patient_card]%></td>
+        <td><%= button_to "Show ",patient_path(patient[:patient].id ),method: :get%></td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+  <style>
+      table {
+          border-collapse: collapse;
+          width: 70%;
+      }
+      th, td {
+          text-align: left;
+          padding: 8px;
+      }
+      th {
+          background-color: #e5f14d;
+          color: #100e0e;
+      }
+      tr:nth-child(even) {
+          background-color: #f2f2f2;
+      }
+  </style>
+
+<%= paginate @patients, previous_label: 'Попередня', next_label: 'Наступна' %>
+<p style="text-align: center;"><%= link_to 'Main page', root_path %></p>

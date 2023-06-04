@@ -1,0 +1,48 @@
+<h1>Editing patient card</h1>
+
+
+<br>
+<%= form_for @patient_card do |f| %>
+  <div class="form-columns">
+    <div class="form-column">
+  <div class="field">
+    <p><%= f.label :diagnosis %>
+      <%= f.text_field :diagnosis %>
+    </p>
+
+    </div>
+      <div class="form-column">
+  <div class="field">
+    <p><%= f.label :data_st,"Start date of treatment " %>
+      <%= f.text_field :data_st%>
+    </p>
+
+      </div>
+    <div class="form-column">
+  <div class="field">
+    <p><%= f.label :clinic_id %>
+      <%= f.collection_select :clinic_id, Clinic.all, :id, :name %>
+    </p>
+  </div>
+
+    <div class="form-column">
+  <div class="field">
+    <p>
+      <%= f.label :patient_id%>
+      <%= f.collection_select :patient_id, Patient.all, :id, :full_name %>
+    </p>
+  </div>
+    </div>
+    <%= f.submit "Update",class:"bnt"%>
+
+<% end %>
+
+<br>
+
+<div>
+  <p><%= link_to "Back to patient cards", patient_cards_path %></p>
+</div>
+</div>
+</div>
+</div>
+</div>

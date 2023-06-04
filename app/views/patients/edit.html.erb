@@ -1,0 +1,47 @@
+<h1>Editing patient</h1>
+
+  <br>
+  <%= form_for @patient do |f| %>
+  <div class="form-columns">
+    <div class="form-column">
+    <div class="field">
+      <p><%= f.label :name %>
+        <%= f.text_field :name %>
+      </p>
+    </div>
+    <div class="field">
+      <p><%= f.label :surname%>
+        <%= f.text_field :surname %>
+      </p>
+    </div>
+      <div class="form-column">
+    <div class="field">
+      <p><%= f.label :phone %>
+        <%= f.text_field :phone%>
+      </p>
+    </div>
+        <div class="form-column">
+    <div class="field">
+      <p><%= f.label :bd%>
+        <%= f.text_field :bd%>
+      </p>
+    </div>
+          <div class="form-column">
+    <div class="field">
+      <p><%= f.label :email %>
+        <%= f.text_field :email%>
+      </p>
+    </div>
+      <%= f.submit %>
+    <% end %>
+
+<div>
+  <p>
+  <%= link_to "Show info", @patient %>
+    <%= link_to "Back to list", patients_path %></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

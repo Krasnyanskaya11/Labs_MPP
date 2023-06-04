@@ -1,0 +1,30 @@
+<h1>Editing doctor</h1>
+<br>
+<%= form_for @doctor do |f| %>
+  <div class="form-columns">
+    <div class="form-column">
+  <div class="field">
+    <p><%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+  </div>
+  <div class="field">
+    <p><%= f.label :surname %>
+      <%= f.text_field :surname %>
+    </p>
+  </div>
+      <div class="form-column">
+  <div class="field">
+    <p>
+      <%= f.label :department_id %>
+      <%= f.collection_select :department_id, Department.all, :id, :name %>
+    </p>
+  </div>
+      </div>
+  <%= f.submit "Update", class:"bnt"%>
+<% end %>
+
+ <p>
+   <%= link_to "Back to doctors", doctors_path %></p>
+</div>
+</div>

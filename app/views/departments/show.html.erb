@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @department %>
+
+<div>
+  <p class="notice"><%= notice %></p>
+  <div class="show-info">
+  <h1><%= @department.name %></h1>
+
+  <p><strong>Clinic :</strong> <%= @department.clinic.name %></p>
+  </div>
+
+
+  <p><%= link_to "Edit this department", edit_department_path(@department) %> |
+  <%= link_to " Back to departments", departments_path %>
+  </p>
+
+<%= button_to "Destroy this department", @department, method: :delete ,class: "button",turbo_confirm: "Are you sure?"%>
+</div>

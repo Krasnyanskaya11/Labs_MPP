@@ -1,0 +1,29 @@
+<h1>Editing speciality</h1>
+<br>
+<%= form_for @speciality do |f| %>
+  <div class="form-columns">
+    <div class="form-column">
+  <div class="field">
+    <p><%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+  </div>
+      <div class="form-column">
+  <div class="field">
+    <p>
+      <%= f.label :doctor_id %>
+      <%= f.collection_select :doctor_id, Doctor.all, :id, :full_name %>
+    </p>
+  </div>
+      </div>
+  <%= f.submit %>
+<% end %>
+
+
+<div>
+  <p>
+
+    <%= link_to "Back to specialities", specialities_path %></p>
+</div>
+</div>
+</div>

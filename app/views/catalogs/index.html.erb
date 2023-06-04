@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Catalog clinics</h1>
+
+<div id="catalogs">
+  <table>
+    <thead>
+    <tr>
+      <th style="text-align: center;">Назва клініки</th>
+      <th style="text-align: center;">Кількість відділів
+      <%= link_to 'Sort', catalogs_path(sort_by: 'departments', order: params[:order] == 'asc' ? 'desc' : 'asc') %></th>
+      <th style="text-align: center;">Кількість докторів
+      <%= link_to 'Sort', catalogs_path(sort_by: 'doctors', order: params[:order] == 'asc' ? 'desc' : 'asc') %></th>
+      <th style="text-align: center;">Посилання</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @clinic_count.each do |clinic| %>
+      <tr style="text-align: center;">
+        <td><%= clinic[:clinic].name %></td>
+        <td><%= clinic[:departments_count] %></td>
+        <td><%= clinic[:doctors_count] %></td>
+        <td><%= button_to "Show ",clinic_path(clinic[:clinic].id ),method: :get%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<%= paginate @clinics, previous_label: 'Попередня', next_label: 'Наступна' %>
+<p style="text-align: center;"><%= link_to 'Main page', root_path,class:"btn" %></p>

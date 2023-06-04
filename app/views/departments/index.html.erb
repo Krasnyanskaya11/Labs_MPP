@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Departments</h1>
+
+<div id="departments">
+  <%= form_with(url: departments_path, method: :get) do |form| %>
+    <%= form.text_field :query, placeholder: 'Search departments' %>
+    <%= form.submit 'Search' %>
+  <% end %>
+  <% @departments.each do |department| %>
+    <%= render department %>
+    <p>
+    <table>
+      <tbody>
+      <tr><th>Name: </th>
+        <td><%= department.name %> </td> </tr>
+      <tr><th>Clinic name : </th>
+        <td><%= department.clinic.name %></td> </tr>
+      </tbody>
+    </table>
+    <%= link_to "Show this department", department %>
+    </p>
+  <% end %>
+  <%= will_paginate @departments, renderer: WillPaginate::ActionView::LinkRenderer, class: 'pagination' %>
+</div>
+
+<p><%= link_to "New department", new_department_path %></p>
+<p><%= link_to 'Main page', root_path %></p>
+<p>
+  Sort by:
+  <%= link_to 'Name (asc)', { sort_field: 'name', sort_direction: 'asc' } %>
+  <%= link_to 'Name (desc)', { sort_field: 'name', sort_direction: 'desc' } %>
+  <%= link_to 'Created at (asc)', { sort_field: 'created_at', sort_direction: 'asc' } %>
+  <%= link_to 'Created at (desc)', { sort_field: 'created_at', sort_direction: 'desc' } %>
+</p>
